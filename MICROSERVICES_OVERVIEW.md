@@ -64,7 +64,7 @@ This document explains how all services work together. Read this first to get th
 ### 3. Order Ticket (Core Flow)
 1. User clicks "Order Ticket" → Client → **Orders** API.
 2. **Orders** creates order, publishes `order.created`.
-3. **Tickets** consumes `order.created` → reserves ticket (sets `orderId` on ticket) → publishes `ticket.updated`.
+3. **Tickets** consumes `order.created` → reserves ticket (sets `orderId` on ticket) → publishes `ticket.updated`. Because `ticket.updated` is published, **Orders** then consumes it and updates its local copy of the ticket.
 4. **Payments** consumes `order.created` → stores order copy (userId, status, price).
 5. **Expiration** consumes `order.created` → schedules `expiration.expired` for 2 minutes later.
 6. Client redirects to Checkout.

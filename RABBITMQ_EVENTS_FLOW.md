@@ -69,7 +69,7 @@ expiration_exchange   expiration.expired       orders_vs_expiration  Orders
 
 | Queue                 | Service    | Handles |
 |-----------------------|------------|---------|
-| tickets_vs_orders     | Tickets    | `order.created` → Reserve ticket, set `orderId` on ticket, publish `ticket.updated`. `order.cancelled` → Release ticket, clear `orderId`, publish `ticket.updated`. |
+| tickets_vs_orders     | Tickets    | `order.created` → Reserve ticket, set `orderId` on ticket, publish `ticket.updated` (so **Orders** consumes `ticket.updated` and updates its local ticket copy). `order.cancelled` → Release ticket, clear `orderId`, publish `ticket.updated`. |
 | payments_vs_orders    | Payments   | `order.created` → Store order. `order.cancelled` → Update order. `order.pending` → Update status. `order.failed` → Update status. |
 | expiration_vs_orders  | Expiration | `order.created` → Schedule delayed `expiration.expired`. |
 

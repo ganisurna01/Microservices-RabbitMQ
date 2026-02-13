@@ -30,7 +30,7 @@ Start here when you return to this project. These notes describe how the service
 
 ## Core Flow: Order → Pay → Complete
 
-1. **Order** → Orders publishes `order.created` → Tickets reserves ticket, Payments stores order, Expiration schedules 2‑min timer.
+1. **Order** → Orders publishes `order.created` → Tickets reserves ticket and publishes `ticket.updated` → Orders updates its local ticket copy. Payments stores order. Expiration schedules 2‑min timer.
 2. **Pay** → User hits Payments API → `payment.created` → Orders sets `pending_payment` → `order.pending` → Payments updates.
 3. **Complete** → Stripe webhook → `payment.succeeded` → Orders sets `completed`.
 4. **Expire** → After 2 min → `expiration.expired` → Orders cancels → `order.cancelled` → Tickets releases ticket.
