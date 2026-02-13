@@ -9,7 +9,8 @@ Start here when you return to this project. These notes describe how the service
 | File | Purpose |
 |------|---------|
 | **MICROSERVICES_OVERVIEW.md** | Architecture, services, high-level flows. Read first. |
-| **RABBITMQ_EVENTS_FLOW.md** | Exchanges, queues, routing keys, event payloads, flow diagrams. |
+| **RABBITMQ_BASICS.md** | What is RabbitMQ, why use it, how it works, operations (publish, consume, ack) with examples. |
+| **RABBITMQ_EVENTS_FLOW.md** | This project’s exchanges, queues, routing keys, event payloads, flow diagrams. |
 | **CLIENT_AND_ROUTING.md** | Client API calls, Ingress routing, auth, checkout flow. |
 | **common/README.md** | Code sharing via NPM package `@ganeshsurnaticketingapp/common`. |
 
